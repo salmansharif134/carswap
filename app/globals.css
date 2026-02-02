@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@source "./**/*.{js,ts,jsx,tsx}";
+@source "../components/**/*.{js,ts,jsx,tsx}";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +26,62 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Fallback: ensure page root is visible even if Tailwind doesn't load */
+body > div {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+/* Fallback: header visible */
+body header {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body main {
+  flex: 1;
+  width: 100%;
+  background: #f9fafb;
+  box-sizing: border-box;
+}
+
+body footer {
+  width: 100%;
+  background: #000;
+  box-sizing: border-box;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes carswap-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.carswap-slide-in {
+  animation: carswap-slide-in 1800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carswap-slide-in {
+    animation: none;
+  }
 }
