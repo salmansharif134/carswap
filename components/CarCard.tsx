@@ -29,7 +29,7 @@ const CarCard: React.FC<CarCardProps> = ({
             alt={title}
             fill
             sizes="(max-width: 640px) 85vw, 320px"
-            className="object-cover group-hover:scale-110 transition-transform duration-300"
+            className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">

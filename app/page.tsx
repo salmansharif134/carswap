@@ -12,11 +12,11 @@ export default function Home() {
       <div className="relative">
         <div className="relative h-[260px] md:h-[340px] lg:h-[420px]">
           <div
-            className="absolute inset-0 bg-no-repeat bg-top"
+            className="absolute inset-0 bg-no-repeat"
             style={{
               backgroundImage: "url('/CarswapbannerNEW.webp')",
-              backgroundSize: 'calc(100% + 20px) auto',
-              backgroundPosition: 'top center',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
             }}
           />
           <div className="absolute inset-0 bg-linear-to-t from-[#1e4d3a]/90 via-[#1e4d3a]/40 to-transparent" />

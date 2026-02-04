@@ -4,6 +4,29 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+function EyeIcon({ show }) {
+  return (
+    <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      {show ? (
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.12 12.132l.652.653M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+      ) : (
+        <>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </>
+      )}
+    </svg>
+  );
+}
+
+function InfoIcon() {
+  return (
+    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-orange-500 text-white text-xs font-bold shrink-0" aria-hidden>
+      !
+    </span>
+  );
+}
+
 export default function AuthPage() {
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showRegPassword, setShowRegPassword] = useState(false);
@@ -11,142 +34,161 @@ export default function AuthPage() {
   return (
     <>
       <Header bgColor="dark-green" />
-      <div className="min-h-screen flex justify-center py-12 bg-gray-50">
-        <div className="w-full max-w-6xl px-6 grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-10">
+      <div className="min-h-screen flex justify-center items-start py-12 bg-[#f7f7f7]">
+        <div className="w-full max-w-6xl px-6 grid grid-cols-1 lg:grid-cols-[3fr_5fr] gap-0 shadow-xl rounded-lg overflow-hidden items-start bg-white">
+          {/* LEFT COLUMN: login card — content height only (shorter) */}
+          <div className="flex flex-col w-full">
+            <div className="pt-6 pb-3 px-6 lg:px-8">
+              <h2 className="text-2xl font-bold text-[#333333]">Bejelentkezés</h2>
+            </div>
+            <div className="bg-[#1e4d3a] p-6 lg:p-8 text-white flex flex-col">
+              <div className="space-y-3 max-w-sm">
+                <div>
+                  <label className="block text-sm font-bold mb-1.5 text-white">E-mail cím*</label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-2.5 bg-[#f5f5f5] text-gray-900 border border-[#e0e0e0] rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
+                    placeholder="Adja meg az e-mail címet"
+                  />
+                </div>
 
-        {/* LOGIN PANEL */}
-       <div className="bg-[#063c2a] pt-8 pb-4 px-8 text-white shadow-lg rounded">
-  <h2 className="text-lg font-semibold mb-4">Bejelentkezés</h2>
+                <div>
+                  <label className="block text-sm font-bold mb-1.5 text-white">Jelszó*</label>
+                  <div className="relative">
+                    <input
+                      type={showLoginPassword ? 'text' : 'password'}
+                      className="w-full px-4 py-2.5 pr-10 bg-[#f5f5f5] text-gray-900 border border-[#e0e0e0] rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
+                      placeholder="Adja meg a jelszót"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowLoginPassword(!showLoginPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      aria-label="Jelszó megjelenítése"
+                    >
+                      <EyeIcon show={showLoginPassword} />
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-  <div className="space-y-3">
-    <div>
-      <label className="text-sm font-medium">E-mail cím*</label>
-      <input
-        className="w-full mt-2 px-4 py-3 text-black bg-white rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#d9b26c]"
-        placeholder="Adja meg az e-mail címet"
-      />
-    </div>
+              <div className="flex items-center justify-between text-sm mt-3">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" className="w-4 h-4 rounded border-2 border-gray-400 bg-transparent text-[#a1793d] focus:ring-[#a1793d] accent-[#a1793d]" />
+                  <span className="text-white">Emlékezz rám</span>
+                </label>
+                <a href="#" className="text-[#5ba3a3] hover:underline font-medium">Elfelejtett jelszó</a>
+              </div>
 
-    <div>
-      <label className="text-sm font-medium">Jelszó*</label>
-      <div className="relative mt-2">
-        <input
-          type={showLoginPassword ? 'text' : 'password'}
-          className="w-full px-4 py-3 text-black bg-white rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#d9b26c]"
-          placeholder="Adja meg a jelszót"
-        />
-        <button
-          type="button"
-          onClick={() => setShowLoginPassword(!showLoginPassword)}
-          className="absolute right-3 top-3 opacity-50 hover:opacity-75"
-        >
-          {showLoginPassword ? '🙈' : '👁'}
-        </button>
-      </div>
-    </div>
-
-    <div className="flex justify-between text-xs pt-2">
-      <label className="flex items-center gap-2 cursor-pointer">
-        <input type="checkbox" className="w-4 h-4" /> Emlékezz rám
-      </label>
-      <span className="underline cursor-pointer hover:opacity-80">Elfelejtett jelszó</span>
-    </div>
-
-    <button className="mt-3 w-full bg-[#d9b26c] text-black py-3 rounded text-sm font-semibold hover:bg-[#c9a25c] transition">
-      BEJELENTKEZÉS
-    </button>
-  </div>
-</div>
-
-
-        {/* REGISTER PANEL */}
-        <div className="bg-white shadow-lg rounded overflow-hidden">
-          <div className="border-t-4 border-[#063c2a] p-8">
-            <h2 className="text-lg font-semibold mb-6 text-black">Regisztráció</h2>
-
-            <div className="grid grid-cols-2 gap-6">
+              <div className="flex justify-center mt-4">
+                <button
+                  type="button"
+                  className="bg-[#a37a40] text-white py-2.5 px-10 rounded-md font-bold text-sm uppercase tracking-wide shadow-md hover:bg-[#8a6a34] hover:shadow-lg transition-all"
+                >
+                  BEJELENTKEZÉS
+                </button>
+              </div>
+            </div>
+            </div>
+          {/* RIGHT COLUMN: registration panel */}
+          <div className="flex flex-col w-full min-h-0">
+            <div className="pt-6 pb-3 px-6 lg:px-8">
+              <h2 className="text-2xl font-bold text-[#333333]">Regisztráció</h2>
+              <div className="mt-1 h-0.5 w-full max-w-[120px] bg-[#1e4d3a] rounded" aria-hidden />
+            </div>
+            <div className="bg-white p-8 lg:p-10 flex-1 flex flex-col min-h-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="text-sm font-medium text-black">Keresztnév*</label>
+                <label className="block text-sm font-bold text-[#333333] mb-1.5">Keresztnév*</label>
                 <input
-                  className="mt-2 w-full bg-gray-100 px-4 py-3 rounded text-sm text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#d9b26c]"
+                  type="text"
+                  className="w-full px-4 py-2.5 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="Adja meg a keresztnevét"
                 />
+                <p className="flex items-start gap-1.5 mt-1.5 text-xs text-[#555555]">
+                  <InfoIcon />
+                  <span>A név hirdetés feltöltésnél elrejthető.</span>
+                </p>
               </div>
+
               <div>
-                <label className="text-sm font-medium text-black">Vezetéknév*</label>
+                <label className="block text-sm font-bold text-[#333333] mb-1.5">Vezetéknév*</label>
                 <input
-                  className="mt-2 w-full bg-gray-100 px-4 py-3 rounded text-sm text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#d9b26c]"
+                  type="text"
+                  className="w-full px-4 py-2.5 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="Adja meg a vezetéknevét"
                 />
               </div>
-            </div>
 
-            <p className="text-xs text-gray-600 mt-3">
-              A név hirdetés feltöltésnél elérhető.
-            </p>
-
-            <div className="grid grid-cols-2 gap-6 mt-6">
               <div>
-                <label className="text-sm font-medium text-black">Telefonszám*</label>
+                <label className="block text-sm font-bold text-[#333333] mb-1.5">Telefonszám*</label>
                 <input
-                  className="mt-2 w-full bg-gray-100 px-4 py-3 rounded text-sm text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#d9b26c]"
-                  placeholder="+36…"
+                  type="tel"
+                  className="w-full px-4 py-2.5 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
+                  placeholder="+36...."
                 />
-                <p className="text-xs text-gray-600 mt-2">
-                  A telefonszám megadására a profilod egyedi azonosítása miatt van szükség.
+                <p className="flex items-start gap-1.5 mt-1.5 text-xs text-[#555555]">
+                  <InfoIcon />
+                  <span>A telefonszám megadására a profilod egyedi azonosítása miatt van szükség.</span>
                 </p>
-                <div className="mt-3 space-y-2 text-xs text-black">
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input type="checkbox" className="w-4 h-4" />
+                <div className="mt-3 space-y-2">
+                  <label className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
+                    <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" />
                     <span>Van WhatsApp fiókom ezzel a telefonszámmal regisztrálva.</span>
                   </label>
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input type="checkbox" className="w-4 h-4" />
+                  <label className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
+                    <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" />
                     <span>Van Viber fiókom ezzel a telefonszámmal regisztrálva.</span>
                   </label>
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-black">E-mail cím*</label>
+                <label className="block text-sm font-bold text-[#333333] mb-1.5">E-mail cím*</label>
                 <input
-                  className="mt-2 w-full bg-gray-100 px-4 py-3 rounded text-sm text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#d9b26c]"
+                  type="email"
+                  className="w-full px-4 py-2.5 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="Adja meg az e-mail címet"
                 />
               </div>
             </div>
 
             <div className="mt-6">
-              <label className="text-sm font-medium text-black">Jelszó*</label>
-              <div className="relative mt-2">
+              <label className="block text-sm font-bold text-[#333333] mb-1.5">Jelszó*</label>
+              <div className="relative">
                 <input
                   type={showRegPassword ? 'text' : 'password'}
-                  className="w-full bg-gray-100 px-4 py-3 rounded text-sm text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#d9b26c]"
+                  className="w-full px-4 py-2.5 pr-10 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="Írja be a jelszót"
                 />
                 <button
                   type="button"
                   onClick={() => setShowRegPassword(!showRegPassword)}
-                  className="absolute right-3 top-3 opacity-50 hover:opacity-75"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  aria-label="Jelszó megjelenítése"
                 >
-                  {showRegPassword ? '🙈' : '👁'}
+                  <EyeIcon show={showRegPassword} />
                 </button>
               </div>
             </div>
 
-            <div className="mt-6 text-xs text-black">
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" className="w-4 h-4" />
+            <div className="mt-6">
+              <label className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
+                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" />
                 <span>Ön kereskedő?</span>
               </label>
             </div>
 
-            <button className="mt-6 w-full bg-[#d9b26c] text-black px-6 py-3 rounded text-sm font-semibold hover:bg-[#c9a25c] transition">
-              REGISZTRÁCIÓ
-            </button>
+            <div className="mt-6 flex justify-center">
+              <button
+                type="button"
+                className="bg-[#a1793d] text-white py-3 px-10 rounded font-bold text-sm uppercase tracking-wide hover:bg-[#8a6a34] transition-colors"
+              >
+                REGISZTRÁCIÓ
+              </button>
+            </div>
+            </div>
           </div>
-        </div>
-
         </div>
       </div>
       <Footer />
