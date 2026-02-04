@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useRouter } from 'next/navigation';
 
 function EyeIcon({ show }) {
   return (
@@ -28,8 +29,85 @@ function InfoIcon() {
 }
 
 export default function AuthPage() {
+  const router = useRouter();
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showRegPassword, setShowRegPassword] = useState(false);
+  
+  // Registration form state
+  const [regForm, setRegForm] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    password: '',
+    isTrader: false,
+    whatsapp: false,
+    viber: false,
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState({ type: '', text: '' });
+
+  const handleRegChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setRegForm(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  const handleRegSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage({ type: '', text: '' });
+
+    try {
+      const response = await fetch('/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(regForm),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage({ 
+          type: 'success', 
+          text: 'Registration successful! Redirecting...' 
+        });
+        // Clear form
+        setRegForm({
+          firstName: '',
+          lastName: '',
+          phone: '',
+          email: '',
+          password: '',
+          isTrader: false,
+          whatsapp: false,
+          viber: false,
+        });
+        // Redirect after 2 seconds
+        setTimeout(() => {
+          router.push('/');
+        }, 2000);
+      } else {
+        setMessage({ 
+          type: 'error', 
+          text: data.error || 'Registration failed. Please try again.' 
+        });
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      setMessage({ 
+        type: 'error', 
+        text: 'An error occurred. Please try again later.' 
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -97,11 +175,25 @@ export default function AuthPage() {
               <div className="mt-1 h-0.5 w-full max-w-[120px] bg-[#1e4d3a] rounded" aria-hidden />
             </div>
             <div className="bg-white p-8 lg:p-10 flex-1 flex flex-col min-h-0">
+            <form onSubmit={handleRegSubmit} className="flex flex-col h-full">
+              {message.text && (
+                <div className={`mb-4 p-3 rounded text-sm font-medium ${
+                  message.type === 'success' 
+                    ? 'bg-green-100 text-green-800 border border-green-300' 
+                    : 'bg-red-100 text-red-800 border border-red-300'
+                }`}>
+                  {message.text}
+                </div>
+              )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-bold text-[#333333] mb-1.5">Keresztnév*</label>
                 <input
                   type="text"
+                  name="firstName"
+                  value={regForm.firstName}
+                  onChange={handleRegChange}
+                  required
                   className="w-full px-4 py-2.5 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="Adja meg a keresztnevét"
                 />
@@ -115,6 +207,10 @@ export default function AuthPage() {
                 <label className="block text-sm font-bold text-[#333333] mb-1.5">Vezetéknév*</label>
                 <input
                   type="text"
+                  name="lastName"
+                  value={regForm.lastName}
+                  onChange={handleRegChange}
+                  required
                   className="w-full px-4 py-2.5 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="Adja meg a vezetéknevét"
                 />
@@ -124,6 +220,10 @@ export default function AuthPage() {
                 <label className="block text-sm font-bold text-[#333333] mb-1.5">Telefonszám*</label>
                 <input
                   type="tel"
+                  name="phone"
+                  value={regForm.phone}
+                  onChange={handleRegChange}
+                  required
                   className="w-full px-4 py-2.5 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="+36...."
                 />
@@ -133,11 +233,23 @@ export default function AuthPage() {
                 </p>
                 <div className="mt-3 space-y-2">
                   <label className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
-                    <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" />
+                    <input 
+                      type="checkbox" 
+                      name="whatsapp"
+                      checked={regForm.whatsapp}
+                      onChange={handleRegChange}
+                      className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" 
+                    />
                     <span>Van WhatsApp fiókom ezzel a telefonszámmal regisztrálva.</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
-                    <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" />
+                    <input 
+                      type="checkbox" 
+                      name="viber"
+                      checked={regForm.viber}
+                      onChange={handleRegChange}
+                      className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" 
+                    />
                     <span>Van Viber fiókom ezzel a telefonszámmal regisztrálva.</span>
                   </label>
                 </div>
@@ -147,6 +259,10 @@ export default function AuthPage() {
                 <label className="block text-sm font-bold text-[#333333] mb-1.5">E-mail cím*</label>
                 <input
                   type="email"
+                  name="email"
+                  value={regForm.email}
+                  onChange={handleRegChange}
+                  required
                   className="w-full px-4 py-2.5 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="Adja meg az e-mail címet"
                 />
@@ -158,6 +274,10 @@ export default function AuthPage() {
               <div className="relative">
                 <input
                   type={showRegPassword ? 'text' : 'password'}
+                  name="password"
+                  value={regForm.password}
+                  onChange={handleRegChange}
+                  required
                   className="w-full px-4 py-2.5 pr-10 bg-[#eeeeee] text-gray-900 border border-[#e0e0e0] rounded text-sm placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#a1793d]"
                   placeholder="Írja be a jelszót"
                 />
@@ -174,19 +294,27 @@ export default function AuthPage() {
 
             <div className="mt-6">
               <label className="flex items-center gap-2 cursor-pointer text-sm text-[#555555]">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" />
+                <input 
+                  type="checkbox" 
+                  name="isTrader"
+                  checked={regForm.isTrader}
+                  onChange={handleRegChange}
+                  className="w-4 h-4 rounded border-gray-300 text-[#a1793d] focus:ring-[#a1793d]" 
+                />
                 <span>Ön kereskedő?</span>
               </label>
             </div>
 
             <div className="mt-6 flex justify-center">
               <button
-                type="button"
-                className="bg-[#a1793d] text-white py-3 px-10 rounded font-bold text-sm uppercase tracking-wide hover:bg-[#8a6a34] transition-colors"
+                type="submit"
+                disabled={loading}
+                className="bg-[#a1793d] text-white py-3 px-10 rounded font-bold text-sm uppercase tracking-wide hover:bg-[#8a6a34] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
-                REGISZTRÁCIÓ
+                {loading ? 'REGISZTRÁCIÓ...' : 'REGISZTRÁCIÓ'}
               </button>
             </div>
+            </form>
             </div>
           </div>
         </div>

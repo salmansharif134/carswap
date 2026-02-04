@@ -13,13 +13,7 @@ export default function KinalatunkFilterChips({
 }: KinalatunkFilterChipsProps) {
   return (
     <div className="flex flex-wrap items-center gap-3 mb-5">
-      <button
-        type="button"
-        onClick={onClearAll}
-        className="bg-red-600 text-white px-5 py-2.5 rounded text-sm font-bold uppercase tracking-wide hover:bg-red-700 transition-colors"
-      >
-        CLEAR ALL FILTERS
-      </button>
+     
 
       {activeFilters.map((filter) => (
         <span
