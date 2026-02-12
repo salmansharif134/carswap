@@ -81,7 +81,7 @@ export default function Header({
           <Link href="#" className="hover:opacity-90 font-[Montserrat]">
             Adminisztrátor
           </Link>
-          <Link href="#" className="hover:opacity-90 font-[Montserrat]">
+          <Link href="/elofizetesek" className="hover:opacity-90 font-[Montserrat]">
             Előfizetések
           </Link>
         </nav>
