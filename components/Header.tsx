@@ -38,7 +38,7 @@ export default function Header({
   return (
     <header
       className={[
-        "sticky top-0 z-50 w-full transition-all duration-200",
+        "fixed top-0 left-0 w-full z-50 transition-all duration-200",
         getBgClass(),
       ].join(" ")}
     >

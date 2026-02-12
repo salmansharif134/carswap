@@ -20,9 +20,7 @@ export default function Home() {
             }}
           />
           <div className="absolute inset-0   to-transparent" />
-          <div className="sticky top-0 z-10000">
-            <Header />
-          </div>
+          <Header />
         </div>
       </div>
 
@@ -37,6 +35,11 @@ export default function Home() {
           <div className="w-full border-t-4 border-green-900"></div>
         </div>
         <SectionLatest />
+        <div className="flex justify-center mt-6 mb-16">
+          <button className="px-6 py-3 bg-[#DBB27E] text-white rounded-lg shadow  transition-colors font-semibold">
+            Mutasd mind
+          </button>
+        </div>
       </main>
       <Footer />
       {/* Fixed accessibility/feedback eye icon */}

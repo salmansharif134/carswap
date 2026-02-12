@@ -18,9 +18,15 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative w-full bg-black pt-12 pb-8">
+<footer className="relative w-full bg-black pt-10 pb-16">
+      {/* Top center vector/triangle */}
+      <div className="absolute left-1/2 -top-1 -translate-x-1/2 z-10">
+        <svg width="90" height="32" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="40,48 0,0 80,0" fill="white" />
+        </svg>
+      </div>
 
-      {/* Logo */}
+                    {/* className="px-4 py-2 border-2 border-[#000000] rounded text-black placeholder-black" */}
       <div className="w-full flex justify-center mb-10">
         <Image
           src="/logo.webp"
@@ -31,12 +37,21 @@ const Footer: React.FC = () => {
         />
       </div>
 
-      {/* Newsletter */}
+       {/* className="px-4 py-2 border-2 border-[#000000] rounded text-black placeholder-black" */}
       <div className="max-w-7xl mx-auto px-6 mb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           <div>
-            <h2 className="text-[#dcb377] text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+            <h2
+              style={{
+                fontSize: '39px',
+                fontWeight: 600,
+                lineHeight: '36px',
+                letterSpacing: '0.3px',
+                color: '#DBB27E',
+              }}
+              className="mb-6"
+            >
               Csatlakozz a <br /> levelezőlistánkhoz!
             </h2>
 
@@ -53,7 +68,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <form className="bg-white rounded-lg p-6 shadow-lg space-y-4" onSubmit={handleSubmit}>
+            <form className="bg-white rounded-lg p-6 shadow-lg space-y-4 " onSubmit={handleSubmit}>
               <div className="flex gap-4">
                 <div className="flex flex-col flex-1">
                   <label className="text-gray-600 mb-1">Név</label>
@@ -61,7 +76,8 @@ const Footer: React.FC = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="px-4 py-2 border rounded"
+                    placeholder="Név"
+                    className="px-4 py-2 border-2 border-[#000000] rounded  text-black placeholder-black"
                   />
                 </div>
 
@@ -69,9 +85,10 @@ const Footer: React.FC = () => {
                   <label className="text-gray-600 mb-1">Email</label>
                   <input
                     type="email"
+                    placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="px-4 py-2 border rounded"
+                    className="px-4 py-2 border-2 border-[#000000] rounded  text-black placeholder-black"
                   />
                 </div>
               </div>
@@ -83,7 +100,7 @@ const Footer: React.FC = () => {
                 </span>
               </div>
 
-              <button className="w-full bg-[#dcb377] hover:bg-[#c9a667] text-white font-bold py-3 rounded">
+              <button className="w-full bg-[#DBB27E] hover:bg-[#c9a667] text-white font-bold  py-2 rounded">
                 FELIRATKOZÁS
               </button>
             </form>
