@@ -2,74 +2,152 @@
 
 import React from 'react';
 import Image from 'next/image';
+import {
+  ArrowPathIcon,
+  BoltIcon,
+  StarIcon,
+  WrenchScrewdriverIcon,
+  MapPinIcon
+} from '@heroicons/react/24/solid';
 
 interface CarCardProps {
-  title: string;
-  subtitle: string;
+  imageSrc: string;
   price: string;
-  imageSrc?: string;
-  tags?: string[];
+  year: number;
+  type?: string; // Made optional as it wasn't prominent in the new text
+  makeModel: string;
+  status: string;
+  fuel: string;
+  mileage: string;
+  capacity: string;
+  transmission: string;
+  condition: string;
+  power: string;
+  location?: string;
+  badge?: string; // For "Kiemelt 1", "ÚJ", etc.
   priceBg?: 'green' | 'brown';
 }
 
 const CarCard: React.FC<CarCardProps> = ({
-  title,
-  subtitle,
-  price,
   imageSrc,
-  tags = [],
+  price,
+  year,
+  type,
+  makeModel,
+  status,
+  fuel,
+  mileage,
+  capacity,
+  transmission,
+  condition,
+  power,
+  location,
+  badge,
   priceBg = 'green',
 }) => {
   return (
-    <div className="bg-white overflow-hidden rounded-lg border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-      <div className="relative aspect-video bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden">
+    <div className="bg-white rounded-none md:rounded-lg overflow-hidden border border-gray-100  transition-all duration-300 group h-full flex flex-col">
+      {/* Image Section */}
+      <div className="relative aspect-[16/10] bg-gray-200 overflow-hidden">
         {imageSrc ? (
           <Image
             src={imageSrc}
-            alt={title}
+            alt={makeModel}
             fill
-            sizes="(max-width: 640px) 85vw, 320px"
-            className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">
-            Auto
+          <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+            No Image
           </div>
         )}
-        <div
-          className={[
-            'absolute bottom-3 right-3 px-3 py-1.5 rounded-md text-white text-sm font-bold shadow-lg',
-            priceBg === 'green' ? 'bg-[#1e4d3a]' : 'bg-[#D4A574]',
-          ].join(' ')}
-        >
+
+        {/* Badge (Top Left) */}
+        {badge && (
+          <div className="absolute top-0 left-0 z-20 bg-[#dcb377] text-white text-[10px] md:text-xs font-bold px-2 py-1 uppercase">
+            {badge}
+          </div>
+        )}
+
+        {/* Price Tag - Angled/Skewed style */}
+        <div className={`absolute bottom-0 right-0 z-10 pl-8 pr-4 py-2 text-white font-bold text-lg md:text-xl
+          ${priceBg === 'green' ? 'bg-[#0b4f3a]' : 'bg-[#a37f4b]'}
+        `}
+          style={{ clipPath: 'polygon(20px 0, 100% 0, 100% 100%, 0% 100%)' }}>
           {price}
         </div>
       </div>
-      <div className="px-4 py-4">
-        <h3 className="font-bold text-black text-sm truncate uppercase tracking-wider text-gray-900 mb-1">
-          {title}
+
+      {/* Content Section */}
+      <div className="p-3 md:p-4 flex flex-col flex-grow">
+        {/* Header: Make + Model (moved up based on visual hierarchy in prompt usually implies title first) */}
+        <h3 className="text-base md:text-lg font-extrabold text-[#0b4f3a] uppercase truncate mb-1" title={makeModel}>
+          {makeModel}
         </h3>
-        <p className="text-gray-600 text-xs mb-3 line-clamp-2">{subtitle}</p>
-        {tags.length > 0 && (
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-2 pt-2 border-t border-gray-100">
-            <span className="flex items-center gap-1 px-2 py-1 rounded bg-gray-50 hover:bg-gray-100 transition">
-              <svg className="w-3.5 h-3.5 text-[#D4A574] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <span className="text-xs text-gray-700 font-medium">{tags[0]}</span>
-            </span>
-            {tags[1] && (
-              <span className="flex items-center gap-1 px-2 py-1 rounded bg-gray-50 hover:bg-gray-100 transition">
-                <svg className="w-3.5 h-3.5 text-[#D4A574] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2h-2m-4-1V9a2 2 0 012-2h2a2 2 0 012 2v1m-6 12a2 2 0 002-2v-4a2 2 0 00-2-2h-2m-4-1V7a2 2 0 012-2h2a2 2 0 012 2v1"/></svg>
-                <span className="text-xs text-gray-700 font-medium">{tags[1]}</span>
-              </span>
-            )}
-            {tags[2] && (
-              <span className="flex items-center gap-1 px-2 py-1 rounded bg-gray-50 hover:bg-gray-100 transition">
-                <svg className="w-3.5 h-3.5 text-[#D4A574] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                <span className="text-xs text-gray-700 font-medium">{tags[2]}</span>
-              </span>
-            )}
+
+        {/* Year + Type (Subtitle) */}
+        <div className="text-[#dcb377] text-[12px] md:text-sm font-bold uppercase tracking-wider mb-2">
+          {year}
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-[1px] bg-gray-200 mb-3"></div>
+
+        {/* Specs Grid */}
+        <div className="grid grid-cols-2 gap-y-2 gap-x-1 text-[10px] md:text-[11px] text-gray-600 font-medium">
+
+          {/* Status */}
+          <div className="flex items-center gap-1.5 col-span-2 sm:col-span-1">
+            <ArrowPathIcon className="w-3.5 h-3.5 text-gray-400" />
+            <span className="uppercase truncate">{status}</span>
           </div>
-        )}
+
+          {/* Fuel */}
+          <div className="flex items-center gap-1.5 col-span-2 sm:col-span-1">
+            <svg className="w-3.5 h-3.5 text-gray-400" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3a1 1 0 0 0-2 0v2H9V3a1 1 0 0 0-2 0v2H5a1 1 0 0 0-1 1v9h1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2h6v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2h1V6a1 1 0 0 0-1-1zm-4 9H9V7h6v7z" /></svg>
+            <span className="uppercase truncate">{fuel}</span>
+          </div>
+
+          {/* Mileage */}
+          <div className="flex items-center gap-1.5 col-span-2 sm:col-span-1">
+            <span className="font-bold text-gray-400 text-xs w-3.5 text-center">A</span>
+            <span>{mileage}</span>
+          </div>
+
+          {/* Capacity */}
+          <div className="flex items-center gap-1.5 col-span-2 sm:col-span-1">
+            <WrenchScrewdriverIcon className="w-3.5 h-3.5 text-gray-400" />
+            <span>{capacity}</span>
+          </div>
+
+          {/* Power */}
+          <div className="flex items-center gap-1.5 col-span-2 sm:col-span-1">
+            <BoltIcon className="w-3.5 h-3.5 text-gray-400" />
+            <span>{power}</span>
+          </div>
+
+          {/* Transmission - spans if needed or concise */}
+          <div className="flex items-center gap-1.5 col-span-2">
+            <div className="w-3.5 h-3.5 rounded-full border border-gray-400 flex items-center justify-center text-[7px] font-bold text-gray-500">A</div>
+            <span className="uppercase truncate">{transmission}</span>
+          </div>
+
+          {/* Condition */}
+          <div className="flex items-center gap-1.5 col-span-2 sm:col-span-1">
+            <StarIcon className="w-3.5 h-3.5 text-gray-400" />
+            <span className="uppercase truncate">{condition}</span>
+          </div>
+
+          {/* Location (New) */}
+          {location && (
+            <div className="flex items-center gap-1.5 col-span-2 mt-1">
+              <MapPinIcon className="w-3.5 h-3.5 text-gray-400" />
+              <span className="truncate">{location}</span>
+            </div>
+          )}
+
+        </div>
       </div>
     </div>
   );

@@ -57,7 +57,7 @@ const actionLinkClass =
 const labelLinkClass =
   'text-[11px] tracking-widest uppercase text-gray-600 underline decoration-dotted underline-offset-4 group-hover:text-black';
 const listLinkClass =
-  'text-[12px] tracking-widest uppercase text-gray-600 underline decoration-dotted underline-offset-4 hover:text-black';
+  'text-[12px] tracking-widest  text-gray-600 underline decoration-dotted underline-offset-4 hover:text-black';
 
 function BrandTile({ name }: { name: string }) {
   const src = brandLogos[name];
@@ -198,16 +198,20 @@ const BrowseSection: React.FC = () => {
 
       {/* CARSWAP explanation with two-tone logo: car split green/gold, text gold */}
       <div className="relative mt-16 p-8 rounded-lg bg-gray-50 border border-gray-100 overflow-hidden flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-        <div className="relative z-10 order-2 md:order-1 max-w-[680px] text-[14px] md:text-[15px] leading-6 text-gray-800 space-y-6">
-          <p>
+        <div className="relative z-10 order-2 md:order-1 max-w-[650px] text-[14px] md:text-[15px] leading-6 text-gray-700 space-y-6">
+
+          <span className="block">
             A CARSWAP® az autórajongók megbízható partnere, akik használt autókat szeretnének
             cserélni vagy értékesíteni. Platformunkon egyszerűen töltheti fel járművét,
             cserélhet más autóra, vagy találhat vevőt.
-          </p>
-          <p>
+          </span>
+
+          <span className="block  mt-4">
             Csatlakozzon a CARSWAP® közösséghez, és tegye zökkenőmentessé autós ügyleteit!
-          </p>
+          </span>
+
         </div>
+
         <div
           ref={carswapLogoRef}
           className={[

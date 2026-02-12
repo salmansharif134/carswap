@@ -62,7 +62,7 @@ export default function AuthPage() {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await fetch('/register', {
+      const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ export default function AuthPage() {
               <div className="flex justify-center mt-4">
                 <button
                   type="button"
-                  className="bg-[#a37a40] text-white py-2.5 px-10 rounded-md font-bold text-sm uppercase tracking-wide shadow-md hover:bg-[#8a6a34] hover:shadow-lg transition-all"
+                  className="bg-[#a37a40] text-white py-2.5 px-10 rounded-md font-bold text-sm uppercase tracking-wide  hover:bg-[#8a6a34]  transition-all"
                 >
                   BEJELENTKEZÉS
                 </button>

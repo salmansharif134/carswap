@@ -2,44 +2,118 @@
 
 import React from 'react';
 
+import Image from 'next/image';
+
 const services = [
   {
     title: 'Autócsere könnyedén',
     desc: 'A CARSWAP teljes körű támogatást nyújt az autócsere lebonyolításában. Legyen szó bármilyen típusú gépjárműről, segítünk megtalálni az ideális cserepartnert.',
+    icon: (
+      <Image
+        src="/qwerty.png"
+        alt="Autócsere"
+        width={80}
+        height={80}
+        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      />
+    ),
   },
   {
     title: 'Autószerviz és kiegészítők',
     desc: 'Autószervizeket és kiegészítők forgalmazóit is megtalálhatja a CARSWAP® ajánlásával.',
+    icon: (
+      <Image
+        src="/1122.png"
+        alt="Autóértékesítés"
+        width={80}
+        height={80}
+        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      />
+    ),
   },
   {
     title: 'HD képek és virtuális túra',
     desc: 'Mutassa meg gépjárművét a legjobb oldaláról! HD minőségű képekkel és hamarosan virtuális túrával is segítünk az autók bemutatásában.',
+    icon: (
+      <Image
+        src="/hd.png"
+        alt="Autóértékesítés"
+        width={80}
+        height={80}
+        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      />
+    ),
   },
   {
     title: 'Céges autók értékesítése',
     desc: 'Cégek számára is lehetőséget kínálunk flottagépjárművek cseréjére vagy értékesítésére.',
+    icon: (
+      <Image
+        src="/ceges.png"
+        alt="Céges autók értékesítése"
+        width={80}
+        height={80}
+        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      />
+    ),
   },
   {
     title: 'Autóértékesítés és hirdetés',
     desc: 'Adja el használt autóját gyorsan és egyszerűen a CARSWAP® felületén. Hozza létre hirdetését, és érje el leendő vásárlóját még ma!',
+    icon: (
+      <Image
+        src="/121.png"
+        alt="Autóértékesítés"
+        width={80}
+        height={80}
+        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      />
+    ),
   },
   {
     title: 'Dokumentációkezelés',
     desc: 'Segítünk a szükséges dokumentumok elkészítésében és kezelésében az autóvásárlás vagy -eladás során.',
+    icon: (
+      <Image
+        src="/22.png"
+        alt="Autóértékesítés"
+        width={80}
+        height={80}
+        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      />
+    ),
   },
   {
     title: 'Szerviz ajánlás és szakértői segítség',
     desc: 'Ismerjük a legjobb szervizeket és szakembereket. Az általunk ajánlott partnerek kipróbált, megbízható támogatást nyújtanak gépjárművével kapcsolatban.',
+    icon: (
+      <Image
+        src="/ff2.png"
+        alt="Autóértékesítés"
+        width={80}
+        height={80}
+        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      />
+    ),
   },
   {
     title: 'Egyéb Szolgáltatások',
     desc: 'További egyedi szolgáltatásokat kínálunk, hogy minden igényét kielégítsük.',
+    icon: (
+      <Image
+        src="/dsd.png"
+        alt="Autóértékesítés"
+        width={80}
+        height={80}
+        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      />
+    ),
   },
 ];
 
 const Icon = () => (
   <svg
-    className="w-8 h-8 text-black"
+    className="w-16 h-16 md:w-20 md:h-20 text-black"
     fill="none"
     stroke="currentColor"
     strokeWidth="1.6"
@@ -60,20 +134,20 @@ const ServicesSection = () => {
   return (
     <>
       {/* SERVICES */}
-      <section className="max-w-[1200px] mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-24 gap-y-8">
+      <section className="max-w-[1400px] mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-24 gap-y-12">
           {[left, right].map((column, i) => (
-            <div key={i} className="space-y-8">
+            <div key={i} className="space-y-10">
               {column.map((s) => (
-                <div key={s.title} className="flex gap-4">
-                  <div className="mt-1 shrink-0">
-                    <Icon />
+                <div key={s.title} className="flex items-start gap-6">
+                  <div className="shrink-0">
+                    {s.icon ? s.icon : <Icon />}
                   </div>
                   <div>
                     <h3 className="text-[22px] font-bold text-black leading-tight">
                       {s.title}
                     </h3>
-                    <p className="mt-1 text-[14px] text-gray-600 leading-6 max-w-[520px]">
+                    <p className="mt-2 text-[15px] text-gray-600 leading-6 max-w-[600px]">
                       {s.desc}
                     </p>
                   </div>
