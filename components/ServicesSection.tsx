@@ -14,7 +14,7 @@ const services = [
         alt="Autócsere"
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        className="w-48 h-48 object-contain"
       />
     ),
   },
@@ -27,7 +27,7 @@ const services = [
         alt="Autóértékesítés"
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        className="w-48 h-48 object-contain"
       />
     ),
   },
@@ -40,7 +40,7 @@ const services = [
         alt="Autóértékesítés"
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        className="w-48 h-48 object-contain"
       />
     ),
   },
@@ -53,7 +53,7 @@ const services = [
         alt="Céges autók értékesítése"
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        className="w-48 h-48 object-contain"
       />
     ),
   },
@@ -66,7 +66,7 @@ const services = [
         alt="Autóértékesítés"
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        className="w-48 h-48 object-contain"
       />
     ),
   },
@@ -79,7 +79,7 @@ const services = [
         alt="Autóértékesítés"
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        className="w-48 h-48 object-contain"
       />
     ),
   },
@@ -92,7 +92,7 @@ const services = [
         alt="Autóértékesítés"
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        className="w-48 h-48 object-contain"
       />
     ),
   },
@@ -105,7 +105,7 @@ const services = [
         alt="Autóértékesítés"
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        className="w-48 h-48 object-contain"
       />
     ),
   },
@@ -113,7 +113,7 @@ const services = [
 
 const Icon = () => (
   <svg
-    className="w-16 h-16 md:w-20 md:h-20 text-black"
+    className="w-48 h-48 text-black"
     fill="none"
     stroke="currentColor"
     strokeWidth="1.6"

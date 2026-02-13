@@ -11,7 +11,7 @@ import KinalatunkFilterChips from "@/components/kinalatunk/KinalatunkFilterChips
 import KinalatunkFeaturedHeader from "@/components/kinalatunk/KinalatunkFeaturedHeader";
 import KinalatunkPagination from "@/components/kinalatunk/KinalatunkPagination";
 export default function KinalatunkPage() {
-  const [activeFilters, setActiveFilters] = useState<string[]>(["Eladó"]);
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const handleClearAllFilters = () => {
     setActiveFilters([]);
@@ -26,7 +26,7 @@ export default function KinalatunkPage() {
       <Header customBgClass="bg-[#1e4d3a]" />
 
       <div className="bg-gray-100 min-h-screen w-full">
-        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8 mt-16 md:mt-30">
           <FilterSidebar />
 
           <main>

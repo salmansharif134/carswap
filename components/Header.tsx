@@ -14,6 +14,7 @@ export default function Header({
   customBgClass,
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +77,7 @@ export default function Header({
           >
             Kínálatunk
           </Link>
-          <Link href="#" className="hover:opacity-90 font-[Montserrat]">
+          <Link href="/partnereink" className="hover:opacity-90 font-[Montserrat]">
             Partnereink
           </Link>
           <Link
@@ -94,7 +95,18 @@ export default function Header({
         </nav>
 
         {/* Right Section */}
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-4 md:gap-10">
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden flex flex-col items-center justify-center w-8 h-8 text-white hover:opacity-90"
+            aria-label="Toggle mobile menu"
+          >
+            <span className={`block w-5 h-0.5 bg-white transition-transform ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
+            <span className={`block w-5 h-0.5 bg-white transition-opacity ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+            <span className={`block w-5 h-0.5 bg-white transition-transform ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
+          </button>
+
           {/* Compare */}
           <button className="flex flex-col items-center text-white hover:opacity-90">
             <span className="flex h-13 w-13 items-center justify-center rounded-full">
@@ -140,6 +152,12 @@ export default function Header({
           {/* CTA */}
           <Link
             href="#"
+            className="flex sm:hidden items-center justify-center w-12 h-12 bg-[#DBB27E] text-white font-[Montserrat] text-xs rounded-full relative"
+          >
+            <span className="text-center">+</span>
+          </Link>
+          <Link
+            href="#"
             className="hidden sm:flex items-center w-[226.95px] h-[38px] bg-[#DBB27E] text-white font-[Montserrat] text-[12px] pt-[12px] pr-[22px] pb-[10px] pl-[40px] flex items-center relative"
           >
             <span className="absolute left-0 top-1/2 -translate-y-1/2">
@@ -157,6 +175,42 @@ export default function Header({
             </span>
           </Link>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-[#1e4d3a] shadow-lg z-50">
+            <nav className="flex flex-col py-4">
+              <Link
+                href="/kinalatunk"
+                className="px-6 py-3 text-white hover:bg-[#2a5d4a] font-[Montserrat] text-sm"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Kínálatunk
+              </Link>
+              <Link
+                href="/partnereink"
+                className="px-6 py-3 text-white hover:bg-[#2a5d4a] font-[Montserrat] text-sm"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Partnereink
+              </Link>
+              <Link
+                href="/adminisztrator"
+                className="px-6 py-3 text-white hover:bg-[#2a5d4a] font-[Montserrat] text-sm"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Adminisztrátor
+              </Link>
+              <Link
+                href="/elofizetesek"
+                className="px-6 py-3 text-white hover:bg-[#2a5d4a] font-[Montserrat] text-sm"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Előfizetések
+              </Link>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );

@@ -11,7 +11,7 @@ export default function ListingCard({ car }: ListingCardProps) {
   return (
     <div className="bg-white rounded-lg  border border-gray-200 overflow-hidden w-full">
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-[34%] relative h-[200px] md:h-[180px] shrink-0 flex flex-col">
+        <div className="md:w-[34%] relative h-48 shrink-0 flex flex-col">
           <div className="absolute inset-0 bg-gray-200">
             <Image
               src={car.image}

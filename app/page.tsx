@@ -31,7 +31,7 @@ export default function Home() {
         <BrowseSection />
         <ServicesSection />
         <SectionFeatured />
-        <div className="flex justify-center px-20 py-0">
+        <div className="flex justify-center px-4 sm:px-8 md:px-12 lg:px-20 py-0">
           <div className="w-full border-t-4 border-green-900"></div>
         </div>
         <SectionLatest />

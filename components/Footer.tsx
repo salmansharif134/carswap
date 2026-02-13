@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           alt="CARSWAP"
           width={480}
           height={144}
-          className="w-auto h-40 object-contain"
+          className="w-auto h-48 object-contain"
         />
       </div>
 
@@ -43,14 +43,7 @@ const Footer: React.FC = () => {
           
           <div>
             <h2
-              style={{
-                fontSize: '39px',
-                fontWeight: 600,
-                lineHeight: '36px',
-                letterSpacing: '0.3px',
-                color: '#DBB27E',
-              }}
-              className="mb-6"
+              className="text-2xl md:text-3xl lg:text-[39px] font-semibold leading-tight mb-6 text-[#DBB27E]"
             >
               Csatlakozz a <br /> levelezőlistánkhoz!
             </h2>
@@ -116,7 +109,7 @@ const Footer: React.FC = () => {
 
       {/* Bottom Links — EXACTLY like image */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-3 text-center text-white font-bold text-sm mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-center text-white font-bold text-sm mb-12">
 
           <div className="space-y-3">
             <p>Kapcsolat</p>

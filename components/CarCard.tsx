@@ -48,7 +48,7 @@ const CarCard: React.FC<CarCardProps> = ({
   return (
     <div className="bg-white rounded-none md:rounded-lg overflow-hidden border border-gray-100  transition-all duration-300 group h-full flex flex-col">
       {/* Image Section */}
-      <div className="relative aspect-[16/10] bg-gray-200 overflow-hidden">
+      <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
         {imageSrc ? (
           <Image
             src={imageSrc}

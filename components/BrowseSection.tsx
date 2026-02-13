@@ -64,14 +64,14 @@ function BrandTile({ name }: { name: string }) {
 
   return (
     <a href="#" className="group flex flex-col items-center text-gray-900 no-underline">
-      <div className="w-20 h-20 flex items-center justify-center mb-3 overflow-hidden">
+      <div className="h-48 w-48 flex items-center justify-center mb-3 overflow-hidden">
         {src ? (
           <Image
             src={src}
             alt={name}
             width={72}
             height={72}
-            className="h-[72px] w-[72px] object-contain"
+            className="h-48 w-48 object-contain"
           />
         ) : (
           <span className="text-sm font-bold text-gray-600">{name.slice(0, 2).toUpperCase()}</span>

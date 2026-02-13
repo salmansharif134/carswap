@@ -189,9 +189,9 @@ export default function AuthPage() {
   return (
     <>
       <Header bgColor="dark-green" />
-      <div className="min-h-screen py-12 px-4  mt-35  background-color-[#e8e8e8]">
+      <div className="min-h-screen py-6 md:py-12 px-4 mt-20 md:mt-35 background-color-[#e8e8e8]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-6">
             {/* LEFT COLUMN: Login Section */}
             <div className="shadow-lg">
               {/* Login Header */}
@@ -202,7 +202,7 @@ export default function AuthPage() {
               </div>
 
               {/* Login Form */}
-              <div className="bg-[#0d4430] px-6 py-8">
+              <div className="bg-[#003E21] px-6 py-8">
                 <form onSubmit={handleLoginSubmit} className="space-y-5">
                   {/* Email */}
                   <div>
@@ -263,13 +263,15 @@ export default function AuthPage() {
                   </div>
 
                   {/* Login Button */}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-[#c9a66b] hover:bg-[#b8956a] text-white font-bold py-3 text-sm uppercase transition-all disabled:bg-gray-400"
-                  >
-                    {loading ? "BEJELENTKEZÉS..." : "BEJELENTKEZÉS"}
-                  </button>
+                  <div className="flex justify-start">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-40 bg-[#c9a66b] hover:bg-[#b8956a] text-white font-bold py-3 text-sm uppercase transition-all disabled:bg-gray-400 text-center"
+                    >
+                      {loading ? "BEJELENTKEZÉS..." : "BEJELENTKEZÉS"}
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>

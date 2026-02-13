@@ -26,7 +26,7 @@ export const cars: KinalatunkCar[] = [
     image: "/1.jpg",
     featured: true,
     row1: [
-      { label: "ELADÁSI MÓD", value: "ELADÓ / CSERÉLHETŐ" },
+      { label: "ELADÁSI MÓD", value: "CSERÉLHETŐ" },
       { label: "ÜZEMANYAG TÍPUSA", value: "BENZIN / GÁZ (LPG)" },
       { label: "KM. ÓRA ÁLLÁS", value: "7777 km" },
       { label: "HENGERŰRTARTALOM", value: "77777 cm3" },
@@ -46,7 +46,7 @@ export const cars: KinalatunkCar[] = [
     image: "/2.jpg",
     featured: true,
     row1: [
-      { label: "ELADÁSI MÓD", value: "ELADÓ" },
+      { label: "ELADÁSI MÓD", value: "" },
       { label: "ÜZEMANYAG TÍPUSA", value: "BENZIN" },
       { label: "KM. ÓRA ÁLLÁS", value: "12 000 km" },
       { label: "HENGERŰRTARTALOM", value: "6498 cm3" },
@@ -103,7 +103,7 @@ export const cars: KinalatunkCar[] = [
     price: "4 444Ft",
     image: "/5.jpg",
     row1: [
-      { label: "ELADÁSI MÓD", value: "ELADÓ / CSERÉLHETŐ" },
+      { label: "ELADÁSI MÓD", value: "CSERÉLHETŐ" },
       { label: "ÜZEMANYAG TÍPUSA", value: "BENZIN / GÁZ (LPG)" },
       { label: "KM. ÓRA ÁLLÁS", value: "11 111 km" },
       { label: "HENGERŰRTARTALOM", value: "1500 cm3" },
@@ -122,7 +122,7 @@ export const cars: KinalatunkCar[] = [
     price: "33 333Ft",
     image: "/1.jpg",
     row1: [
-      { label: "ELADÁSI MÓD", value: "ELADÓ / CSERÉLHETŐ" },
+      { label: "ELADÁSI MÓD", value: "CSERÉLHETŐ" },
       { label: "ÜZEMANYAG TÍPUSA", value: "BENZIN" },
       { label: "KM. ÓRA ÁLLÁS", value: "11 111 km" },
       { label: "HENGERŰRTARTALOM", value: "1000 cm3" },
@@ -142,7 +142,7 @@ export const cars: KinalatunkCar[] = [
     image: "/2.jpg",
     featured: true,
     row1: [
-      { label: "ELADÁSI MÓD", value: "ELADÓ / CSERÉLHETŐ" },
+      { label: "ELADÁSI MÓD", value: "CSERÉLHETŐ" },
       { label: "ÜZEMANYAG TÍPUSA", value: "BENZIN / GÁZ (LPG)" },
       { label: "KM. ÓRA ÁLLÁS", value: "333 km" },
       { label: "HENGERŰRTARTALOM", value: "1200 cm3" },
@@ -161,7 +161,7 @@ export const cars: KinalatunkCar[] = [
     price: "55 555Ft",
     image: "/3.jpg",
     row1: [
-      { label: "ELADÁSI MÓD", value: "ELADÓ / CSERÉLHETŐ" },
+      { label: "ELADÁSI MÓD", value: "CSERÉLHETŐ" },
       { label: "ÜZEMANYAG TÍPUSA", value: "DÍZEL" },
       { label: "KM. ÓRA ÁLLÁS", value: "180 000 km" },
       { label: "HENGERŰRTARTALOM", value: "2000 cm3" },
@@ -180,7 +180,7 @@ export const cars: KinalatunkCar[] = [
     price: "3 333Ft",
     image: "/4.jpg",
     row1: [
-      { label: "ELADÁSI MÓD", value: "ELADÓ" },
+      { label: "ELADÁSI MÓD", value: "" },
       { label: "ÜZEMANYAG TÍPUSA", value: "BENZIN / GÁZ (LPG)" },
       { label: "KM. ÓRA ÁLLÁS", value: "33 333 km" },
       { label: "HENGERŰRTARTALOM", value: "333 cm3" },
@@ -199,7 +199,7 @@ export const cars: KinalatunkCar[] = [
     price: "77 676Ft",
     image: "/5.jpg",
     row1: [
-      { label: "ELADÁSI MÓD", value: "ELADÓ" },
+      { label: "ELADÁSI MÓD", value: "" },
       { label: "ÜZEMANYAG TÍPUSA", value: "ELEKTROMOS" },
       { label: "KM. ÓRA ÁLLÁS", value: "25 000 km" },
       { label: "HENGERŰRTARTALOM", value: "—" },

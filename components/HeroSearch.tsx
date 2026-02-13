@@ -27,22 +27,22 @@ const HeroSearch: React.FC = () => {
   const [powerRange, setPowerRange] = useState<[number, number]>([100, 65589]);
 
   return (
-    <section className="relative z-20 w-full -mt-[49px]">
+    <section className="relative z-20 w-full -mt-[49px] ">
       <div className="w-full px-6 pb-10">
 
         {/* Top bar */}
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="bg-[#023429] text-white font-bold px-7 py-3 text-base rounded-t-md">
+          <div className="bg-[#003E21] text-white font-bold px-7 py-3 text-base rounded-t-md">
             Keresés
           </div>
 
-          <div className="flex items-stretch gap-1 relative z-10">
+          <div className="flex items-stretch gap-1 relative z-10 mb-[9.2px]"> 
             {['Kiemelt', 'Népszerű', 'Legutóbbi'].map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setActiveTab(tab)}
-                className={`relative px-6 py-3 text-sm font-bold transition-all -translate-y-[3px] ${
+                className={`relative px-6 py-3 text-sm font-bold transition-all  ${
                   activeTab === tab
                     ? 'bg-[#cfb480] text-white'
                     : 'bg-[#cfb480]/80 text-white/70 hover:text-white hover:bg-[#bfa068]'
@@ -50,7 +50,7 @@ const HeroSearch: React.FC = () => {
               >
                 {tab}
                 {activeTab === tab && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-[#cfb480]" />
+                  <div className="" />
                 )}
               </button>
             ))}
@@ -58,7 +58,7 @@ const HeroSearch: React.FC = () => {
         </div>
 
         {/* Search Box */}
-        <div className="bg-[#023429] shadow-xl px-7 pt-7 pb-4 md:px-8 md:pt-8 -mt-1 rounded-b-md rounded-tr-md">
+        <div className="bg-[#003E21] shadow-xl px-7 pt-7 pb-4 md:px-8 md:pt-8 -mt-1 rounded-b-md rounded-tr-md">
 
           {/* Always Visible Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-x-4 gap-y-6 mb-6">

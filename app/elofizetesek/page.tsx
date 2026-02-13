@@ -8,7 +8,7 @@ export default function Subscriptions() {
       <Header customBgClass="bg-[#1e4d3a]" />
       <div className="bg-gray-100 min-h-screen w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="text-5xl mt-40 p-10 font-bold text-center text-[#232628] mb-32">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl mt-20 md:mt-40 p-4 md:p-10 font-bold text-center text-[#232628] mb-16 md:mb-32">
             ELŐFIZETÉSI CSOMAGOK
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-6">
