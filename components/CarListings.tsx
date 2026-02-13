@@ -10,6 +10,7 @@ const sampleCars = [
     price: '4 444 Ft',
     year: 1952,
     makeModel: 'AIXAM CROSSLINE',
+    status: '',
     fuel: 'BENZIN / GÁZ (LPG)',
     mileage: '7 777 km',
     capacity: '77 777 cm³',
