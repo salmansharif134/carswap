@@ -37,10 +37,11 @@ export default function Header({
 
   return (
     <header
-      className={[
-        "fixed top-0 left-0 w-full z-50 transition-all duration-200",
-        getBgClass(),
-      ].join(" ")}
+      className="fixed top-0 left-0 w-full z-50 bg-cover bg-center transition-all duration-200"
+      style={{
+        backgroundImage: `linear-gradient(135deg, rgba(24, 102, 72, 0.69) 0%, rgba(12, 75, 50, 0.7) 100%)
+, url('/header-bg-1.webp')`,
+      }}
     >
       <div
         className={[
@@ -78,10 +79,16 @@ export default function Header({
           <Link href="#" className="hover:opacity-90 font-[Montserrat]">
             Partnereink
           </Link>
-          <Link href="#" className="hover:opacity-90 font-[Montserrat]">
+          <Link
+            href="/adminisztrator"
+            className="hover:opacity-90 font-[Montserrat]"
+          >
             Adminisztrátor
           </Link>
-          <Link href="/elofizetesek" className="hover:opacity-90 font-[Montserrat]">
+          <Link
+            href="/elofizetesek"
+            className="hover:opacity-90 font-[Montserrat]"
+          >
             Előfizetések
           </Link>
         </nav>
@@ -142,10 +149,12 @@ export default function Header({
                 width={68}
                 height={68}
                 className="w-16 h-16 object-contain bg-transparent"
-                style={{ boxShadow: 'none', background: 'transparent' }}
+                style={{ boxShadow: "none", background: "transparent" }}
               />
             </span>
-            <span className="pl-[40px] whitespace-nowrap text-left">HIRDETÉS FELTÖLTÉSE</span>
+            <span className="pl-[40px] whitespace-nowrap text-left">
+              HIRDETÉS FELTÖLTÉSE
+            </span>
           </Link>
         </div>
       </div>
