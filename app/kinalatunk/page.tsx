@@ -23,7 +23,7 @@ export default function KinalatunkPage() {
 
   return (
     <>
-      <Header customBgClass="bg-[#1e4d3a]" />
+      <Header alwaysShowGradient />
 
       <div className="bg-gray-100 min-h-screen w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8 mt-16 md:mt-30">

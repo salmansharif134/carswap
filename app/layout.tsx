@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Geist_Mono } from "next/font/google";
+import { Open_Sans, Geist_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
 import Loader from "../components/Loader";
 
@@ -10,6 +10,11 @@ const openSans = Open_Sans({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
@@ -26,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openSans.variable} ${geistMono.variable} antialiased`}
+        className={`${openSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased`}
         style={{ minHeight: '100vh', margin: 0 }}
       >
         <Loader>{children}</Loader>

@@ -26,19 +26,21 @@ export default function Home() {
 
       {/* Search/filter bar UNDER the banner image */}
       <main className="grow bg-white-50">
-        <HeroSearch />
-        <SectionNewUsed />
-        <BrowseSection />
-        <ServicesSection />
-        <SectionFeatured />
-        <div className="flex justify-center px-4 sm:px-8 md:px-12 lg:px-20 py-0">
-          <div className="w-full border-t-4 border-green-900"></div>
-        </div>
-        <SectionLatest />
-        <div className="flex justify-center mt-6 mb-16">
-          <button className="px-6 py-3 bg-[#DBB27E] text-white rounded-lg shadow  transition-colors font-semibold">
-            Mutasd mind
-          </button>
+        <div className="max-w-[1400px] mx-auto">
+          <HeroSearch />
+          <SectionNewUsed />
+          <BrowseSection />
+          <ServicesSection />
+          <SectionFeatured />
+          <div className="flex justify-center px-4 sm:px-8 md:px-12 lg:px-20 py-0">
+            <div className="w-full border-t-4 border-green-900"></div>
+          </div>
+          <SectionLatest />
+          <div className="flex justify-center mt-6 mb-16">
+            <button className="px-6 py-3 bg-[#DBB27E] text-white rounded-lg shadow  transition-colors font-semibold">
+              Mutasd mind
+            </button>
+          </div>
         </div>
       </main>
       <Footer />

@@ -72,7 +72,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <Header bgColor="dark-green" />
+      <Header alwaysShowGradient />
       <div className="min-h-screen bg-white py-10 md:py-20 px-4 mt-16 md:mt-25">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -185,11 +185,10 @@ export default function ContactForm() {
               {/* Success/Error Message */}
               {submitMessage.text && (
                 <div
-                  className={`mt-6 p-4 rounded ${
-                    submitMessage.type === "success"
+                  className={`mt-6 p-4 rounded ${submitMessage.type === "success"
                       ? "bg-green-100 text-green-800"
                       : "bg-red-100 text-red-800"
-                  }`}
+                    }`}
                 >
                   {submitMessage.text}
                 </div>

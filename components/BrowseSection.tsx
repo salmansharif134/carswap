@@ -55,16 +55,16 @@ const typeIcons: Record<string, string> = {
 const actionLinkClass =
   'text-gray-500 text-sm font-medium underline decoration-dotted underline-offset-4 hover:text-black';
 const labelLinkClass =
-  'text-[11px] tracking-widest uppercase text-gray-600 underline decoration-dotted underline-offset-4 group-hover:text-black';
+  'text-[13px] tracking-widest uppercase text-gray-600 underline decoration-dotted underline-offset-4 group-hover:text-black';
 const listLinkClass =
-  'text-[12px] tracking-widest  text-gray-600 underline decoration-dotted underline-offset-4 hover:text-black';
+  'text-[13px] tracking-widest  text-gray-600 underline decoration-dotted underline-offset-4 hover:text-black block';
 
 function BrandTile({ name }: { name: string }) {
   const src = brandLogos[name];
 
   return (
     <a href="#" className="group flex flex-col items-center text-gray-900 no-underline">
-      <div className="h-48 w-48 flex items-center justify-center mb-3 overflow-hidden">
+      <div className="h-20 w-20 flex items-center justify-center mb-3 overflow-hidden">
         {src ? (
           <Image
             src={src}
@@ -108,11 +108,13 @@ function TypeTile({ name }: { name: string }) {
 
 function TextListGrid({ items }: { items: string[] }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-10 gap-x-10 pt-6">
+    <div className="grid grid-cols-4 gap-y-8 gap-x-8">
       {items.map((item) => (
-        <a key={item} href="#" className={listLinkClass}>
-          {item}
-        </a>
+        <div key={item}>
+          <a href="#" className={listLinkClass}>
+            {item}
+          </a>
+        </div>
       ))}
     </div>
   );
@@ -145,8 +147,8 @@ const BrowseSection: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
         {/* Browse by Brand */}
         <div className="min-h-[220px]">
-          <div className="flex items-end justify-between gap-6 mb-4">
-            <h2 className="text-[28px] md:text-[34px] font-bold text-black leading-tight">
+          <div className="flex items-end justify-between gap-6 mb-6">
+            <h2 className="text-[26px] md:text-[26px] font-bold text-black leading-tight font-montserrat">
               Nézz körül <span className="text-[#dcb377]">Márka</span> szerint
             </h2>
             <button
@@ -161,7 +163,7 @@ const BrowseSection: React.FC = () => {
           {showAllBrands ? (
             <TextListGrid items={allBrands} />
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 pt-3">
+            <div className="grid grid-cols-4 gap-x-8 gap-y-6">
               {brands.map((b) => (
                 <BrandTile key={b} name={b} />
               ))}
@@ -171,8 +173,8 @@ const BrowseSection: React.FC = () => {
 
         {/* Browse by Type */}
         <div className="min-h-[220px]">
-          <div className="flex items-end justify-between gap-6 mb-4">
-            <h2 className="text-[28px] md:text-[34px] font-bold text-black leading-tight">
+          <div className="flex items-end justify-between gap-6 mb-6">
+            <h2 className="text-[26px] md:text-[26px] font-bold text-black leading-tight font-montserrat">
               ...vagy <span className="text-[#dcb377]">Kivitel</span> szerint
             </h2>
             <button
@@ -187,7 +189,7 @@ const BrowseSection: React.FC = () => {
           {showAllTypes ? (
             <TextListGrid items={allTypes} />
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 pt-3">
+            <div className="grid grid-cols-4 gap-x-8 gap-y-6">
               {types.map((t) => (
                 <TypeTile key={t} name={t} />
               ))}
@@ -197,7 +199,7 @@ const BrowseSection: React.FC = () => {
       </div>
 
       {/* CARSWAP explanation with two-tone logo: car split green/gold, text gold */}
-      <div className="relative mt-16 p-8 rounded-lg bg-gray-50 border border-gray-100 overflow-hidden flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div className="relative mt-16 p-8 rounded-lg bg-gray-50 border border-gray-100 overflow-hidden flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <div className="relative z-10 order-2 md:order-1 max-w-[650px] text-[14px] md:text-[15px] leading-6 text-gray-700 space-y-6">
 
           <span className="block">

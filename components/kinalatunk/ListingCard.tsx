@@ -9,7 +9,7 @@ interface ListingCardProps {
 
 export default function ListingCard({ car }: ListingCardProps) {
   return (
-    <div className="bg-white rounded-lg  border border-gray-200 overflow-hidden w-full">
+    <div className="bg-white rounded-lg overflow-hidden w-full">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-[34%] relative h-48 shrink-0 flex flex-col">
           <div className="absolute inset-0 bg-gray-200">
@@ -101,7 +101,7 @@ export default function ListingCard({ car }: ListingCardProps) {
           <div className="flex flex-nowrap items-center gap-1.5 mt-1.5 overflow-x-auto pb-1">
             <button
               type="button"
-              onClick={() => {}}
+              onClick={() => { }}
               className="inline-flex shrink-0 items-center gap-1 px-2.5 py-1 rounded border-2 border-[#1e4d3a] bg-white text-[#1e4d3a] text-[11px] font-medium hover:bg-[#1e4d3a] hover:text-white transition-colors cursor-pointer [&_svg]:hover:text-white"
             >
               <svg className="w-3 h-3 shrink-0 text-[#1e4d3a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@ export default function ListingCard({ car }: ListingCardProps) {
             </button>
             <button
               type="button"
-              onClick={() => {}}
+              onClick={() => { }}
               className="shrink-0 w-6 h-6 rounded-full border-2 border-gray-300 bg-white flex items-center justify-center text-gray-500 hover:bg-gray-700 hover:text-white hover:border-gray-700 text-[11px] font-bold cursor-pointer transition-colors"
               aria-label="Segítség"
             >
@@ -120,7 +120,7 @@ export default function ListingCard({ car }: ListingCardProps) {
             </button>
             <button
               type="button"
-              onClick={() => {}}
+              onClick={() => { }}
               className="inline-flex shrink-0 items-center gap-1 px-2.5 py-1 rounded border-2 border-[#1e4d3a] bg-white text-[#1e4d3a] text-[11px] font-medium hover:bg-[#1e4d3a] hover:text-white transition-colors cursor-pointer [&_svg]:hover:text-white"
             >
               <svg className="w-3 h-3 text-[#1e4d3a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
@@ -128,7 +128,7 @@ export default function ListingCard({ car }: ListingCardProps) {
             </button>
             <button
               type="button"
-              onClick={() => {}}
+              onClick={() => { }}
               className="inline-flex shrink-0 items-center gap-1 px-2.5 py-1 rounded border-2 border-[#1e4d3a] bg-white text-[#1e4d3a] text-[11px] font-medium hover:bg-[#1e4d3a] hover:text-white transition-colors cursor-pointer [&_svg]:hover:text-white"
             >
               <svg className="w-3 h-3 text-[#1e4d3a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>

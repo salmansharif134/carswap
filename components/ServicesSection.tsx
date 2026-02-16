@@ -1,169 +1,91 @@
 'use client';
 
 import React from 'react';
-
 import Image from 'next/image';
 
-const services = [
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
+    icon: '/qwerty.png',
     title: 'Autócsere könnyedén',
-    desc: 'A CARSWAP teljes körű támogatást nyújt az autócsere lebonyolításában. Legyen szó bármilyen típusú gépjárműről, segítünk megtalálni az ideális cserepartnert.',
-    icon: (
-      <Image
-        src="/qwerty.png"
-        alt="Autócsere"
-        width={80}
-        height={80}
-        className="w-48 h-48 object-contain"
-      />
-    ),
+    description: 'A CARSWAP® teljes körű támogatást nyújt az autócsere lebonyolításában. Legyen szó bármilyen típusú gépjárműről, segítünk megtalálni az ideális cserepartnert.',
   },
   {
-    title: 'Autószerviz és kiegészítők',
-    desc: 'Autószervizeket és kiegészítők forgalmazóit is megtalálhatja a CARSWAP® ajánlásával.',
-    icon: (
-      <Image
-        src="/1122.png"
-        alt="Autóértékesítés"
-        width={80}
-        height={80}
-        className="w-48 h-48 object-contain"
-      />
-    ),
-  },
-  {
-    title: 'HD képek és virtuális túra',
-    desc: 'Mutassa meg gépjárművét a legjobb oldaláról! HD minőségű képekkel és hamarosan virtuális túrával is segítünk az autók bemutatásában.',
-    icon: (
-      <Image
-        src="/hd.png"
-        alt="Autóértékesítés"
-        width={80}
-        height={80}
-        className="w-48 h-48 object-contain"
-      />
-    ),
-  },
-  {
-    title: 'Céges autók értékesítése',
-    desc: 'Cégek számára is lehetőséget kínálunk flottagépjárművek cseréjére vagy értékesítésére.',
-    icon: (
-      <Image
-        src="/ceges.png"
-        alt="Céges autók értékesítése"
-        width={80}
-        height={80}
-        className="w-48 h-48 object-contain"
-      />
-    ),
-  },
-  {
+    icon: '/121.png',
     title: 'Autóértékesítés és hirdetés',
-    desc: 'Adja el használt autóját gyorsan és egyszerűen a CARSWAP® felületén. Hozza létre hirdetését, és érje el leendő vásárlóját még ma!',
-    icon: (
-      <Image
-        src="/121.png"
-        alt="Autóértékesítés"
-        width={80}
-        height={80}
-        className="w-48 h-48 object-contain"
-      />
-    ),
+    description: 'Adja el használt autóját gyorsan és egyszerűen a CARSWAP® felületén. Hozza létre hirdetését, és érje el leendő vásárlóját még ma!',
   },
   {
+    icon: '/1122.png',
+    title: 'Autószerviz és kiegészítők',
+    description: 'Autószervizeket és kiegészítők forgalmazóit is megtalálhatja a CARSWAP® ajánlásával.',
+  },
+  {
+    icon: '/22.png',
     title: 'Dokumentációkezelés',
-    desc: 'Segítünk a szükséges dokumentumok elkészítésében és kezelésében az autóvásárlás vagy -eladás során.',
-    icon: (
-      <Image
-        src="/22.png"
-        alt="Autóértékesítés"
-        width={80}
-        height={80}
-        className="w-48 h-48 object-contain"
-      />
-    ),
+    description: 'Segítünk a szükséges dokumentumok előkészítésében és kezelésében az autóvásárlás vagy -eladás során.',
   },
   {
+    icon: '/hd.png',
+    title: 'HD képek és virtuális túra',
+    description: 'Mutassuk meg gépjárművét a legjobb oldaláról! HD minőségű képekkel és hamarosan virtuális túrával is segítünk az autók bemutatásában.',
+  },
+  {
+    icon: '/ff2.png',
     title: 'Szerviz ajánlás és szakértői segítség',
-    desc: 'Ismerjük a legjobb szervizeket és szakembereket. Az általunk ajánlott partnerek kipróbált, megbízható támogatást nyújtanak gépjárművével kapcsolatban.',
-    icon: (
-      <Image
-        src="/ff2.png"
-        alt="Autóértékesítés"
-        width={80}
-        height={80}
-        className="w-48 h-48 object-contain"
-      />
-    ),
+    description: 'Ismerjük a legjobb szervizeket és szakembereket. Az általunk ajánlott partnerek kipróbált, megbízható támogatást nyújtanak gépjárműével kapcsolatban.',
   },
   {
+    icon: '/ceges.png',
+    title: 'Céges autók értékesítése',
+    description: 'Cégek számára is lehetőségeket kínálunk flottaképjárműveik cseréjére vagy értékesítésére.',
+  },
+  {
+    icon: '/dsd.png',
     title: 'Egyéb Szolgáltatások',
-    desc: 'További egyedi szolgáltatásokat kínálunk, hogy minden igényét kielégítsük.',
-    icon: (
-      <Image
-        src="/dsd.png"
-        alt="Autóértékesítés"
-        width={80}
-        height={80}
-        className="w-48 h-48 object-contain"
-      />
-    ),
+    description: 'További egyedi szolgáltatásokat kínálunk, hogy minden igényét kielégítsük.',
   },
 ];
 
-const Icon = () => (
-  <svg
-    className="w-48 h-48 text-black"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M13 10V3L4 14h7v7l9-11h-7z"
-    />
-  </svg>
-);
-
-const ServicesSection = () => {
-  const left = services.slice(0, 4);
-  const right = services.slice(4);
-
+const FeaturesSection: React.FC = () => {
   return (
-    <>
-      {/* SERVICES */}
-      <section className="max-w-[1400px] mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-24 gap-y-12">
-          {[left, right].map((column, i) => (
-            <div key={i} className="space-y-10">
-              {column.map((s) => (
-                <div key={s.title} className="flex items-start gap-6">
-                  <div className="shrink-0">
-                    {s.icon ? s.icon : <Icon />}
-                  </div>
-                  <div>
-                    <h3 className="text-[22px] font-bold text-black leading-tight">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-[15px] text-gray-600 leading-6 max-w-[600px]">
-                      {s.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
+    <section className="mx-auto w-full max-w-[1400px] px-6 py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-5">
+        {features.map((feature, index) => (
+          <div key={index} className="flex gap-6 items-start">
+            {/* Icon - Fixed size container */}
+            <div className="shrink-0 w-[100px] h-[100px] flex items-center justify-center">
+              <Image
+                src={feature.icon}
+                alt={feature.title}
+                width={80}
+                height={80}
+                className="w-[80px] h-[80px] object-contain"
+              />
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* BOTTOM GREEN LINE */}
-      <div className="w-full">
-        <div className="h-[3px] bg-[#0b5d2a]" />
+            {/* Content */}
+            <div className="flex-1">
+              <h3 className="text-[26px] font-bold text-black mb-2.5  font-montserrat">
+                {feature.title}
+              </h3>
+              <p className="text-[14px] leading-[1.6] text-gray-700 open-sans">
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
-    </>
+
+      {/* Bottom border line */}
+      <div className="mt-16 border-t-[3px] border-black"></div>
+    </section>
   );
 };
 
-export default ServicesSection;
+export default FeaturesSection;

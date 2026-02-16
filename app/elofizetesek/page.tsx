@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 export default function Subscriptions() {
   return (
     <>
-      <Header customBgClass="bg-[#1e4d3a]" />
+      <Header alwaysShowGradient />
       <div className="bg-gray-100 min-h-screen w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl mt-20 md:mt-40 p-4 md:p-10 font-bold text-center text-[#232628] mb-16 md:mb-32">

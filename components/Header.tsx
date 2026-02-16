@@ -7,11 +7,13 @@ import Link from "next/link";
 interface HeaderProps {
   bgColor?: "transparent" | "dark-green" | "custom";
   customBgClass?: string;
+  alwaysShowGradient?: boolean;
 }
 
 export default function Header({
   bgColor = "transparent",
   customBgClass,
+  alwaysShowGradient = false,
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,10 +41,14 @@ export default function Header({
   return (
     <header
       className="fixed top-0 left-0 w-full z-50 bg-cover bg-center transition-all duration-200"
-      style={{
-        backgroundImage: `linear-gradient(135deg, rgba(24, 102, 72, 0.69) 0%, rgba(12, 75, 50, 0.7) 100%)
+      style={
+        isScrolled || alwaysShowGradient
+          ? {
+            backgroundImage: `linear-gradient(135deg, rgba(24, 102, 72, 0.69) 0%, rgba(12, 75, 50, 0.7) 100%)
 , url('/header-bg-1.webp')`,
-      }}
+          }
+          : {}
+      }
     >
       <div
         className={[
@@ -60,12 +66,7 @@ export default function Header({
             width={420}
             height={140}
             priority
-            className={[
-              "w-auto object-contain transition-all duration-200",
-              isScrolled
-                ? "h-[56px] md:h-[64px]"
-                : "h-[72px] md:h-[88px] lg:h-[96px]",
-            ].join(" ")}
+            className="w-auto object-contain transition-all duration-200 h-[72px] md:h-[88px] lg:h-[96px]"
           />
         </Link>
 

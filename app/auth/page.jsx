@@ -187,16 +187,16 @@ export default function AuthPage() {
   };
 
   return (
-    <>
-      <Header bgColor="dark-green" />
-      <div className="min-h-screen py-6 md:py-12 px-4 mt-20 md:mt-35 background-color-[#e8e8e8]">
-        <div className="max-w-7xl mx-auto">
+    <main>
+      <Header alwaysShowGradient />
+      <div className="min-h-screen  bg-[#efefef] py-6 md:py-12 px-4 mt-20 md:mt-35 ">
+        <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-6">
             {/* LEFT COLUMN: Login Section */}
-            <div className="shadow-lg">
+            <div>
               {/* Login Header */}
-              <div className="px-6 py-4">
-                <h2 className="text-2xl font-bold text-[#1a1a1a]">
+              <div className="px-6 py-4 bg-[#efefef]">
+                <h2 className="text-[26px] font-bold  text-[#1a1a1a] font-montserrat">
                   Bejelentkezés
                 </h2>
               </div>
@@ -206,7 +206,7 @@ export default function AuthPage() {
                 <form onSubmit={handleLoginSubmit} className="space-y-5">
                   {/* Email */}
                   <div>
-                    <label className="block text-white text-sm font-semibold mb-2">
+                    <label className="block text-white text-sm font-opensans mb-2">
                       E-mail cím<span className="text-[#c9a66b]">*</span>
                     </label>
                     <input
@@ -215,14 +215,14 @@ export default function AuthPage() {
                       value={loginForm.email}
                       onChange={handleLoginChange}
                       required
-                      className="w-full px-4 py-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b]"
+                      className="w-full px-4 py-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b] border-0"
                       placeholder="Adja meg az e-mail címet"
                     />
                   </div>
 
                   {/* Password */}
                   <div>
-                    <label className="block text-white text-sm font-semibold mb-2">
+                    <label className="block text-white text-sm font-opensans mb-2">
                       Jelszó<span className="text-[#c9a66b]">*</span>
                     </label>
                     <div className="relative">
@@ -232,13 +232,13 @@ export default function AuthPage() {
                         value={loginForm.password}
                         onChange={handleLoginChange}
                         required
-                        className="w-full px-4 py-2.5 pr-12 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b]"
+                        className="w-full px-4 py-2.5 pr-12 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b] border-0"
                         placeholder="Adja meg a jelszót"
                       />
                       <button
                         type="button"
                         onClick={() => setShowLoginPassword(!showLoginPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-800"
                       >
                         <EyeIcon show={showLoginPassword} />
                       </button>
@@ -247,17 +247,20 @@ export default function AuthPage() {
 
                   {/* Remember & Forgot Password */}
                   <div className="flex items-center justify-between text-sm">
-                    <label className="flex items-center gap-2 text-white cursor-pointer">
+                    <label className="flex items-center gap-2 text-white cursor-pointer font-opensans">
                       <input
                         type="checkbox"
                         name="remember"
                         checked={loginForm.remember}
                         onChange={handleLoginChange}
-                        className="w-4 h-4 accent-[#c9a66b]"
+                        className="w-4 h-4 "
                       />
                       <span>Emlékezz rám</span>
                     </label>
-                    <a href="#" className="text-[#5ba3a3] hover:underline">
+                    <a
+                      href="#"
+                      className="text-[#5ba3a3] hover:underline font-opensans"
+                    >
                       Elfelejtett jelszó
                     </a>
                   </div>
@@ -267,7 +270,7 @@ export default function AuthPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-40 bg-[#c9a66b] hover:bg-[#b8956a] text-white font-bold py-3 text-sm uppercase transition-all disabled:bg-gray-400 text-center"
+                      className="w-40 bg-[#c9a66b] hover:bg-[#b8956a] text-white font-bold py-3 text-sm uppercase transition-all disabled:bg-gray-400 disabled:cursor-not-allowed"
                     >
                       {loading ? "BEJELENTKEZÉS..." : "BEJELENTKEZÉS"}
                     </button>
@@ -277,7 +280,7 @@ export default function AuthPage() {
             </div>
 
             {/* RIGHT COLUMN: Registration Section */}
-            <div className="bg-white shadow-lg">
+            <div className="bg-[#efefef]">
               {/* Registration Header */}
               <div className="px-8 py-5 border-b-[3px] border-[#0d4430]">
                 <h2 className="text-2xl font-bold text-[#1a1a1a]">
@@ -286,180 +289,202 @@ export default function AuthPage() {
               </div>
 
               {/* Registration Form */}
-              <div className="px-8 py-8">
-                <form onSubmit={handleRegSubmit}>
-                  {/* Grid Fields */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
-                    {/* First Name */}
-                    <div>
-                      <label className="block text-sm font-semibold text-[#1a1a1a] mb-2">
-                        Keresztnév<span className="text-[#c9a66b]">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={regForm.firstName}
-                        onChange={handleRegChange}
-                        required
-                        className="w-full px-4 py-2.5 bg-[#f3f3f3] text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b]"
-                        placeholder="Adja meg a keresztnevét"
-                      />
-                      <p className="flex items-start gap-2 mt-2 text-xs text-[#666]">
-                        <InfoIcon />
-                        <span>A név hirdetés feltöltésnél elrejthető.</span>
-                      </p>
-                    </div>
+              {/* Registration Form */}
+              {/* RIGHT COLUMN: Registration Section */}
+              <div className=" shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
+                {/* Top Green Border */}
+                <div className="h-[1px] bg-[#0d4430]" />
 
-                    {/* Last Name */}
-                    <div>
-                      <label className="block text-sm font-semibold text-[#1a1a1a] mb-2">
-                        Vezetéknév<span className="text-[#c9a66b]">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={regForm.lastName}
-                        onChange={handleRegChange}
-                        required
-                        className="w-full px-4 py-2.5 bg-[#f3f3f3] text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b]"
-                        placeholder="Adja meg a vezetéknevét"
-                      />
-                    </div>
+                {/* Header */}
 
-                    {/* Phone */}
-                    <div>
-                      <label className="block text-sm font-semibold text-[#1a1a1a] mb-2">
-                        Telefonszám<span className="text-[#c9a66b]">*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={regForm.phone}
-                        onChange={handleRegChange}
-                        required
-                        className="w-full px-4 py-2.5 bg-[#f3f3f3] text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b]"
-                        placeholder="+36..."
-                      />
-                      <p className="flex items-start gap-2 mt-2 text-xs text-[#666]">
-                        <InfoIcon />
-                        <span>
-                          A telefonszám megadására a profilod egyedi azonosítása
-                          miatt van szükség.
-                        </span>
-                      </p>
 
-                      <div className="mt-4 space-y-2">
-                        <label className="flex items-center gap-2 text-sm text-[#555] cursor-pointer">
-                          <input
-                            type="checkbox"
-                            name="whatsapp"
-                            checked={regForm.whatsapp}
-                            onChange={handleRegChange}
-                            className="w-4 h-4 accent-[#c9a66b]"
-                          />
-                          Van WhatsApp fiókom ezzel a telefonszámmal
-                          regisztrálva.
+
+                {/* Registration Form */}
+                <div className="px-8 pb-10">
+                  <form onSubmit={handleRegSubmit} className="space-y-6 mt-8">
+                    {/* Grid Fields */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                      {/* First Name */}
+                      <div>
+                        <label className="block text-[15px] font-semibold font-montserrat text-[#222] mb-2">
+                          Keresztnév<span className="text-[#c9a66b]">*</span>
                         </label>
+                        <input
+                          type="text"
+                          name="firstName"
+                          value={regForm.firstName}
+                          onChange={handleRegChange}
+                          required
+                          placeholder="Adja meg a keresztnevét"
+                          className="w-full px-4 py-2.5 bg-[#dcdfe3] text-[#333] text-[12.5px]
+            focus:outline-none focus:ring-1 focus:ring-[#c9a66b]"
+                        />
+                        <p className="flex items-start gap-2 mt-2 text-[11.5px] text-[#666]">
+                          <InfoIcon />
+                          <span>A név hirdetés feltöltésnél elrejthető.</span>
+                        </p>
+                      </div>
 
-                        <label className="flex items-center gap-2 text-sm text-[#555] cursor-pointer">
-                          <input
-                            type="checkbox"
-                            name="viber"
-                            checked={regForm.viber}
-                            onChange={handleRegChange}
-                            className="w-4 h-4 accent-[#c9a66b]"
-                          />
-                          Van Viber fiókom ezzel a telefonszámmal regisztrálva.
+                      {/* Last Name */}
+                      <div>
+                        <label className="block text-[15px] font-semibold font-montserrat text-[#222] mb-2">
+                          Vezetéknév<span className="text-[#c9a66b]">*</span>
                         </label>
+                        <input
+                          type="text"
+                          name="lastName"
+                          value={regForm.lastName}
+                          onChange={handleRegChange}
+                          required
+                          placeholder="Adja meg a vezetéknevét"
+                          className="w-full px-4 py-2.5 bg-[#dcdfe3] text-[#333] text-[12.5px]
+            focus:outline-none focus:ring-1 focus:ring-[#c9a66b]"
+                        />
+                      </div>
+
+                      {/* Phone */}
+                      <div>
+                        <label className="block text-[15px] font-semibold text-[#222] font-montserrat mb-2">
+                          Telefonszám<span className="text-[#c9a66b]">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={regForm.phone}
+                          onChange={handleRegChange}
+                          required
+                          placeholder="+36..."
+                          className="w-full px-4 py-2.5 bg-[#dcdfe3] text-[#333] text-[12.5px]
+            focus:outline-none focus:ring-1 focus:ring-[#c9a66b]"
+                        />
+
+                        <p className="flex items-start gap-2 mt-2 text-[11.5px] text-[#666]">
+                          <InfoIcon />
+                          <span>
+                            A telefonszám megadására a profilod egyedi
+                            azonosítása miatt van szükség.
+                          </span>
+                        </p>
+
+                        <div className="mt-4 space-y-2">
+                          <label className="flex items-center gap-2 text-[12px] text-[#555] cursor-pointer">
+                            <input
+                              type="checkbox"
+                              name="whatsapp"
+                              checked={regForm.whatsapp}
+                              onChange={handleRegChange}
+                              className="w-4 h-4 accent-[#c9a66b]"
+                            />
+                            Van WhatsApp fiókom ezzel a telefonszámmal
+                            regisztrálva.
+                          </label>
+
+                          <label className="flex items-center gap-2 text-[12px] text-[#555] cursor-pointer">
+                            <input
+                              type="checkbox"
+                              name="viber"
+                              checked={regForm.viber}
+                              onChange={handleRegChange}
+                              className="w-4 h-4 accent-[#c9a66b]"
+                            />
+                            Van Viber fiókom ezzel a telefonszámmal
+                            regisztrálva.
+                          </label>
+                        </div>
+                      </div>
+
+                      {/* Email */}
+                      <div>
+                        <label className="block text-[15px] font-montserrat font-semibold text-[#222] mb-2">
+                          E-mail cím<span className="text-[#c9a66b]">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={regForm.email}
+                          onChange={handleRegChange}
+                          required
+                          placeholder="Adja meg az e-mail címet"
+                          className="w-full px-4 py-2.5 bg-[#dcdfe3] text-[#333] text-[12.5px]
+            focus:outline-none focus:ring-1 focus:ring-[#c9a66b]"
+                        />
                       </div>
                     </div>
 
-                    {/* Email */}
-                    <div>
-                      <label className="block text-sm font-semibold text-[#1a1a1a] mb-2">
-                        E-mail cím<span className="text-[#c9a66b]">*</span>
+                    {/* Password */}
+                    <div className="mt-8 max-w-md">
+                      <label className="block text-[15px] font-montserrat font-semibold text-[#222] mb-2">
+                        Jelszó<span className="text-[#c9a66b]">*</span>
                       </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={regForm.email}
-                        onChange={handleRegChange}
-                        required
-                        className="w-full px-4 py-2.5 bg-[#f3f3f3] text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b]"
-                        placeholder="Adja meg az e-mail címet"
-                      />
-                    </div>
-                  </div>
 
-                  {/* Password - Full Width */}
-                  <div className="mt-6 max-w-md">
-                    <label className="block text-sm font-semibold text-[#1a1a1a] mb-2">
-                      Jelszó<span className="text-[#c9a66b]">*</span>
-                    </label>
-                    <div className="relative">
-                      <input
-                        type={showRegPassword ? "text" : "password"}
-                        name="password"
-                        value={regForm.password}
-                        onChange={handleRegChange}
-                        required
-                        className="w-full px-4 py-2.5 pr-12 bg-[#f3f3f3] text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a66b]"
-                        placeholder="Írja be a jelszót"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showRegPassword ? "text" : "password"}
+                          name="password"
+                          value={regForm.password}
+                          onChange={handleRegChange}
+                          required
+                          placeholder="Írja be a jelszót"
+                          className="w-full px-4 py-2.5 pr-12 bg-[#dcdfe3] text-[#333] text-[12.5px]
+            focus:outline-none focus:ring-1 focus:ring-[#c9a66b]"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowRegPassword(!showRegPassword)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2"
+                        >
+                          <EyeIcon show={showRegPassword} />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Trader */}
+                    <div className="mt-6">
+                      <label className="flex items-center gap-2 text-[12px] text-[#555] cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="isTrader"
+                          checked={regForm.isTrader}
+                          onChange={handleRegChange}
+                          className="w-4 h-4 accent-[#c9a66b]"
+                        />
+                        Ön kereskedő?
+                      </label>
+                    </div>
+
+                    {/* Button */}
+                    <div className="mt-8">
                       <button
-                        type="button"
-                        onClick={() => setShowRegPassword(!showRegPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
+                        type="submit"
+                        disabled={loading}
+                        className="bg-[#c9a66b] hover:bg-[#b8956a]
+          text-white font-semibold py-2 px-8 text-[12px]
+          uppercase tracking-wide transition-all
+          disabled:bg-gray-400"
                       >
-                        <EyeIcon show={showRegPassword} />
+                        {loading ? "REGISZTRÁCIÓ..." : "REGISZTRÁCIÓ"}
                       </button>
                     </div>
-                  </div>
 
-                  {/* Trader Checkbox */}
-                  <div className="mt-5">
-                    <label className="flex items-center gap-2 text-sm text-[#555] cursor-pointer">
-                      <input
-                        type="checkbox"
-                        name="isTrader"
-                        checked={regForm.isTrader}
-                        onChange={handleRegChange}
-                        className="w-4 h-4 accent-[#c9a66b]"
-                      />
-                      Ön kereskedő?
-                    </label>
-                  </div>
-
-                  {/* Register Button */}
-                  <div className="mt-6">
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="bg-[#c9a66b] hover:bg-[#b8956a] text-white font-bold py-3 px-12 text-sm uppercase transition-all disabled:bg-gray-400"
-                    >
-                      {loading ? "REGISZTRÁCIÓ..." : "REGISZTRÁCIÓ"}
-                    </button>
-                  </div>
-
-                  {/* Message Display */}
-                  {message.text && (
-                    <div
-                      className={`mt-4 p-3 rounded ${
-                        message.type === "success"
+                    {/* Message */}
+                    {message.text && (
+                      <div
+                        className={`mt-5 p-3 rounded text-sm ${message.type === "success"
                           ? "bg-green-100 text-green-800"
                           : "bg-red-100 text-red-800"
-                      }`}
-                    >
-                      {message.text}
-                    </div>
-                  )}
-                </form>
+                          }`}
+                      >
+                        {message.text}
+                      </div>
+                    )}
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <Footer />
-    </>
+    </main>
   );
 }
